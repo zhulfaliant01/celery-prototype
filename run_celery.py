@@ -1,3 +1,3 @@
 from scraper.tasks import scrape_task
-
-scrape_task.delay(5,10)
+from celery_app import app
+app.send_task('scraper.scrape_task', args=[5,10])
